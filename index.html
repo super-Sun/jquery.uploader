@@ -7,11 +7,12 @@
 <body>
 <button id="upload">upload</button>
 <button id="click">销毁实例</button>
-<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
-<script src="jquery.uploader.js"></script>
+<script src="https://cdn.bootcss.com/zepto/1.1.7/zepto.min.js"></script>
+<!--依赖jquery或者zepto-->
+<script src="uploader.js"></script>
 <script>
     // 创建实例
-    var $uploader = new Uploader({
+    var uploader = new Uploader({
         id: 'upload',
         action: 'https://www.easy-mock.com/mock/5b2c976f96a0217456c95ecc/example/upload',
         multiple: false,
@@ -28,7 +29,7 @@
         },
         onSuccess: function (res) {
             // 上传成功的回调
-            console.log(res)
+            console.log('onSuccess:', res)
         },
         onError: function (err) {
             // 上传失败的回调
@@ -37,7 +38,7 @@
     })
     // 销毁实例
     $("#click").click(function () {
-        $uploader.destroy()
+        uploader.destroy()
     })
 </script>
 </body>

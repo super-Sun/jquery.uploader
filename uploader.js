@@ -143,13 +143,14 @@
         var options = this.options
         var $uploadSelect = $('<div class="upload-select"></div>')
         var $fileInput = $('<input style="display: none;" type="file" />')
+        this.wrap = $uploadSelect
         $uploadSelect.click(function (e) {
-            console.log(e)
             if (e.target === $fileInput[0]) return
             $(this).find('input').click()
         })
-
-        $fileInput.attr('multiple', options.multiple)
+        if (options.multiple === true) {
+            $fileInput.attr('multiple', options.multiple)
+        }
         $fileInput.attr('accept', options.accept)
         // if (options.capture) {
         //     $fileInput.attr('capture', options.capture)
@@ -217,10 +218,12 @@
      * 原型方法-销毁实例
      */
     uploader.prototype.destroy = function () {
+        if (!this.wrap) return
         var $dom = $("#" + this.options.id)
         $dom.siblings('input[type=file]').remove()
         $dom.unwrap()
+        this.wrap = null
     }
     // 全局赋值
     window.Uploader = uploader
-})(window, jQuery)
+})(window, Zepto)
