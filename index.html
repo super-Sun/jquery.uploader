@@ -3,10 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Uploader</title>
+    <style>
+        #upload {
+            padding: 20px;
+        }
+        .cus-class1 {
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
-<button id="upload">upload</button>
+<div class="wrap">
+    <button id="upload">upload</button>
+</div>
 <button id="click">销毁实例</button>
+<link rel="stylesheet" href="uploader.css">
 <script src="https://cdn.bootcss.com/zepto/1.1.7/zepto.min.js"></script>
 <!--依赖jquery或者zepto-->
 <script src="uploader.js"></script>
@@ -16,6 +27,8 @@
         id: 'upload',
         action: 'https://www.easy-mock.com/mock/5b2c976f96a0217456c95ecc/example/upload',
         multiple: false,
+        loading: true,
+        classNames: ['cus-class1', 'cus-class2'],
         header: {},
         data: {},
         accept: 'image/*',

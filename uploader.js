@@ -111,10 +111,12 @@
             id: '', // *目标元素id
             action: '', // *上传服务器地址
             multiple: false, //
+            loading: false, // 是否在上传过程中转菊花
             accept: '*/*', // 接收的文件类型
             // capture: '', // 拍照（camera） 摄像（camcorder） 录音（microphone）
             maxSize: 500 * 1024 * 1024, // 文件大小上限，单位：MB
             withCredentials: false, // http ..
+            classNames: [], // 用户想要增加的自定义类名
             headers: {}, // http headers
             data: {}, // http data
             name: 'file',
@@ -140,8 +142,12 @@
      */
     uploader.prototype.init = function () {
         var self = this
-        var options = this.options
+        var options = self.options
         var $uploadSelect = $('<div class="upload-select"></div>')
+        if (options.classNames instanceof Array) {
+            var classes = options.classNames.join(' ')
+            $uploadSelect.addClass(classes)
+        }
         var $fileInput = $('<input style="display: none;" type="file" />')
         this.wrap = $uploadSelect
         $uploadSelect.click(function (e) {
@@ -192,6 +198,9 @@
      */
     uploader.prototype.post = function (file, index) {
         var self = this
+        if (self.options.loading) {
+            self.wrap.addClass('loading')
+        }
         self.options.onStart(file)
         var req_options = {
             headers: self.options.headers,
@@ -205,10 +214,12 @@
             onSuccess: function (res) {
                 file.state = 'done'
                 file.url = self.options.formatUrlFromResponse(res)
+                self.wrap.removeClass('loading')
                 self.options.onSuccess(res, file)
             },
             onError: function (err, res) {
                 file.state = 'error'
+                self.wrap.removeClass('loading')
                 self.options.onError(err, res, file)
             }
         }
