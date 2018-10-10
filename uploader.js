@@ -113,7 +113,7 @@
             multiple: false, //
             loading: false, // 是否在上传过程中转菊花
             accept: '*/*', // 接收的文件类型
-            // capture: '', // 拍照（camera） 摄像（camcorder） 录音（microphone）
+            capture: '', // 媒体类型：拍照（camera） 摄像（camcorder） 录音（microphone）
             maxSize: 500 * 1024 * 1024, // 文件大小上限，单位：MB
             withCredentials: false, // http ..
             classNames: [], // 用户想要增加的自定义类名
@@ -148,7 +148,13 @@
             var classes = options.classNames.join(' ')
             $uploadSelect.addClass(classes)
         }
-        var $fileInput = $('<input style="display: none;" type="file" />')
+        var captureDict = {
+            capture: 'capture="camera"',
+            camcorder: 'capture="camcorder"',
+            microphone: 'capture="microphone"',
+        }
+        var capture = captureDict[self.options.capture] || ''
+        var $fileInput = $('<input style="display: none;" type="file" '+ capture +' />')
         this.wrap = $uploadSelect
         $uploadSelect.click(function (e) {
             if (e.target === $fileInput[0]) return
@@ -158,9 +164,7 @@
             $fileInput.attr('multiple', options.multiple)
         }
         $fileInput.attr('accept', options.accept)
-        // if (options.capture) {
-        //     $fileInput.attr('capture', options.capture)
-        // }
+       
         $fileInput.change(function (evt) {
             var files = evt.target.files
             if (!files) return
