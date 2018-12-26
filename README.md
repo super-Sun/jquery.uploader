@@ -23,7 +23,7 @@
 | onSuccess  |    上传成功的回调 | false | Function | function(){} |
 | onError  |    上传失败的回调 | false | Function | function(){} |
 
-#Demo
+# 示例
 ``` html
 <!DOCTYPE html>
 <html lang="en">
