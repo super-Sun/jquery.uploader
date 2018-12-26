@@ -2,6 +2,27 @@
 #### 文件上传组件
 #### 依赖jquery或者zepto（由于需要操作dom元素）
 #### 兼容性：现代浏览器（需要支持formData）
+
+# 文档
+## 参数说明
+
+| Attribute      |    Description | isRequire  | Type | Default |
+| :-------- | :--------| :--: | :--: | :-------- |
+| id  | 绑定的dom元素id |  true   | String | - |
+| action     |   上传的服务器地址 |  true  | String | - |
+| accept      |    上传文件类型限制：\*/\*、image/\*、video/\* | false  | String | \*/* |
+| capture      |    系统所捕获的默认设备：1.camera(直接调用相机);2.camcorder(直接调用摄像) | false | String | - |
+| maxSize      |    文件大小上限 | false  | Number | 500 * 1024 |
+| loading      |    是否展示上传菊花图 | false  | Boolean | - |
+| classNames      |    组件外层可以自定义的类名 | false  | Array | [ ] |
+| multiple      |    文件是否支持多选， multiple为true后，capture就没啥用了 | false | Boolean | false |
+| headers |    设置请求头 | false | Object   | {} |
+| data      |    设置请求体参数 | false | Object | - |
+| name  |    上传的文件的名称 | false | String | "file" |
+| onProgress |    上传进度的回调 | false | Function | function(){} |
+| onSuccess  |    上传成功的回调 | false | Function | function(){} |
+| onError  |    上传失败的回调 | false | Function | function(){} |
+
 #Demo
 ``` html
 <!DOCTYPE html>
@@ -64,30 +85,5 @@
 </body>
 </html>
 ```
-# 参数说明
-
-| Attribute      |    Description | isRequire  | Type | Default |
-| :-------- | :--------| :--: | :--: | :-------- |
-| id  | 绑定的dom元素id |  true   | String | - |
-| action     |   上传的服务器地址 |  true  | String | - |
-| accept      |    上传文件类型限制：\*/\*、image/\*、video/\* | false  | String | \*/* |
-| capture      |    系统所捕获的默认设备：1.camera(直接调用相机);2.camcorder(直接调用摄像) | false | String | - |
-| maxSize      |    文件大小上限 | false  | Number | 500 * 1024 |
-| loading      |    是否展示上传菊花图 | false  | Boolean | - |
-| classNames      |    组件外层可以自定义的类名 | false  | Array | [ ] |
-| multiple      |    文件是否支持多选， multiple为true后，capture就没啥用了 | false | Boolean | false |
-| headers |    设置请求头 | false | Object   | {} |
-| data      |    设置请求体参数 | false | Object | - |
-| name  |    上传的文件的名称 | false | String | "file" |
-| onProgress |    上传进度的回调 | false | Function | function(){} |
-| onSuccess  |    上传成功的回调 | false | Function | function(){} |
-| onError  |    上传失败的回调 | false | Function | function(){} |
-
-
-| Item      |    Value | Qty  |
-| :-------- | --------:| :--: |
-| Computer  | 1600 USD |  5   |
-| Phone     |   12 USD |  12  |
-| Pipe      |    1 USD | 234  |
 
 
