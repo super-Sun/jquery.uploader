@@ -169,10 +169,10 @@
             var files = evt.target.files
             if (!files) return
             files = Array.from(files)
-            if (!self.options.multiple) files = [files[0]]
+            if (!options.multiple) files = [files[0]]
             if (files.length <= 0) return
-            if (files[0].size > this.maxSize) {
-                this.onError('文件过大，请选择较小的文件！')
+            if (files[0].size > options.maxSize) {
+                options.onError('文件过大，请选择较小的文件！')
                 return
             }
             files.forEach((function (file) {
@@ -184,8 +184,8 @@
             })
         })
 
-        $("#" + this.options.id).wrap($uploadSelect)
-        $("#" + this.options.id).before($fileInput)
+        $("#" + options.id).wrap($uploadSelect)
+        $("#" + options.id).before($fileInput)
     }
     /**
      * 原型方法-上传功能主要逻辑
