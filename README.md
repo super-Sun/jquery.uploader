@@ -75,8 +75,7 @@
 | maxSize      |    文件大小上限 | false  | Number | 500 * 1024 |
 | loading      |    是否展示上传菊花图 | false  | Boolean | - |
 | classNames      |    组件外层可以自定义的类名 | false  | Array | [ ] |
-| multiple      |    文件是否支持多选， multiple为true后，capture就没啥用了 | false | Boolean | false
- |
+| multiple      |    文件是否支持多选， multiple为true后，capture就没啥用了 | false | Boolean | false |
 | headers |    设置请求头 | false | Object   | {} |
 | data      |    设置请求体参数 | false | Object | - |
 | name  |    上传的文件的名称 | false | String | "file" |
